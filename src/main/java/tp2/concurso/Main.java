@@ -1,6 +1,5 @@
 package tp2.concurso;
 import tp2.concurso.persistance.AlmacenamientoBaseDatosConcurso;
-
 import java.time.LocalDate;
 
 public class Main {
@@ -13,10 +12,22 @@ public class Main {
         LocalDate fechaLimite = fechaApertura.plusDays(10);
         Concurso concurso = new Concurso(fechaApertura, fechaLimite, almacenamientoBaseDatos);
 
-        // Inscribir participante
-        Participante participante = new Participante(897654, "Lionel Messi");
-        var participante2 = new Participante(283765, "Joaquin Lopez");
-        concurso.inscribirParticipante(participante);
-        concurso.inscribirParticipante(participante2);
+        // Instanciar el EmailSender con tus datos de Mailtrap
+        EmailSender emailSender = new EmailSender(
+                "sandbox.smtp.mailtrap.io",
+                2525,
+                "f5d2f689d53a50",
+                "f92a5b2a23a391"
+        );
+
+        // Inscribir participantes
+        Participante participante1 = new Participante(897654, "Lionel Messi", "LeoMessi@gmail.com");
+
+        concurso.inscribirParticipante(participante1);
+        emailSender.enviarEmail(
+                "Bienvenido al concurso",
+                "Hola"+participante1.getNombre()+", ¡gracias por registrarte!"
+        );
+
     }
 }
