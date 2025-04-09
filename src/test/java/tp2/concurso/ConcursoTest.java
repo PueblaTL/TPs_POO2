@@ -24,8 +24,7 @@ public class ConcursoTest {
         var fechaApertura = LocalDate.now().minusDays(2);
         var fechaLimite = fechaApertura.plusDays(10);
         var fakeInscripcion = new FakeEscritorDeArchivo();
-        var concurso = new Concurso(fechaApertura, fechaLimite);
-        concurso.setAlmacenamiento(new AlmacenamientoAdapter(fakeInscripcion));  // Usar un adaptador
+        var concurso = new Concurso(fechaApertura, fechaLimite, fakeInscripcion);
 
         // Participante
         var participante = new Participante(123456, "Julian Gonzalez");
@@ -42,18 +41,12 @@ public class ConcursoTest {
 
     @Test
     public void inscribirParticipantePrimerDiaDeApertura() {
-        // Uso del archivo para pruebas
         Path directorio = Paths.get(DIRECTORIO);
-        // Configurar el escritor de archivo con la ruta
         EscritorArchivo escritorArchivo = new EscritorDeArchivoEnDisco(directorio.toString());
-
-        // Configuración del concurso
         LocalDate fechaApertura = LocalDate.now();
         LocalDate fechaLimite = fechaApertura.plusDays(10);
+        Concurso concurso = new Concurso(fechaApertura, fechaLimite, escritorArchivo);
 
-        // Uso de un constructor sin el almacenamiento, y luego configurándolo
-        Concurso concurso = new Concurso(fechaApertura, fechaLimite);
-        concurso.setAlmacenamiento(new AlmacenamientoAdapter(escritorArchivo));
 
         // Participante
         Participante participante = new Participante(293235, "Luciano Pelozo");
@@ -61,22 +54,19 @@ public class ConcursoTest {
         // Inscripción
         concurso.inscribirParticipante(participante);
 
-        // Verifica la inscripción y los puntos
+        // Verificar la inscripción y los puntos
+        assertTrue(concurso.existParticipante(participante));
         assertEquals(10, participante.getPuntos());
     }
 
-    @Test
-    public void inscribirParticipanteFueraDelPlazo() {
+  @Test
+  public void inscribirParticipanteFueraDelPlazo() {
         Path directorio = Paths.get(DIRECTORIO);
         EscritorArchivo escritorArchivo = new EscritorDeArchivoEnDisco(directorio.toString());
 
-
         LocalDate fechaApertura = LocalDate.now().minusDays(20); // Fecha pasada
         LocalDate fechaLimite = fechaApertura.plusDays(10);
-
-
-        Concurso concurso = new Concurso(fechaApertura, fechaLimite);
-        concurso.setAlmacenamiento(new AlmacenamientoAdapter(escritorArchivo));
+        Concurso concurso = new Concurso(fechaApertura, fechaLimite, escritorArchivo);
 
         Participante participante = new Participante(338965, "Luis Suarez");
 
@@ -86,18 +76,5 @@ public class ConcursoTest {
 
 
         assertEquals(Concurso.FUERA_DE_PLAZO, exception.getMessage());
-    }
-
-    private static class AlmacenamientoAdapter implements Almacenamiento {
-        private final EscritorArchivo escritorArchivo;
-
-        public AlmacenamientoAdapter(EscritorArchivo escritorArchivo) {
-            this.escritorArchivo = escritorArchivo;
-        }
-
-        @Override
-        public void guardarInscripcion(String info) {
-            escritorArchivo.guardarInscripcion(info);
-        }
     }
 }
