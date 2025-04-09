@@ -1,5 +1,6 @@
 package tp2.concurso;
-import tp2.concurso.persistance.EmailSender;
+
+import tp2.concurso.persistance.EmailServiceImplement;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,13 +25,13 @@ public class Concurso {
         this.inscriptos=new ArrayList<>();
         this.escritorArchivo = escritorArchivo; //Inyección de dependencia
     }
-    public Concurso(LocalDate fechaApertura, LocalDate fechaLimite, Almacenamiento almacenamiento,EmailSender enviadorCorreos) {
+    public Concurso(LocalDate fechaApertura, LocalDate fechaLimite, Almacenamiento almacenamiento, EmailService emailService) {
         this.id = idConcurso++;
         this.fechaApertura = fechaApertura;
         this.fechaLimite = fechaLimite;
         this.inscriptos=new ArrayList<>();
         this.almacenamiento = almacenamiento;
-        this.emailSender = enviadorCorreos;
+        this.emailService = emailService;
     }
 
     public void inscribirParticipante(Participante p){
@@ -42,8 +43,9 @@ public class Concurso {
             // Enviar correo al participante
             String asunto = "Inscripción confirmada";
             String mensaje = "Hola " + p.getName() + ",\n\n" +
-                    " te inscribiste con exito al concurso ¡Exitos";
-            emailSender.enviarEmail(p.getEmail(), asunto, mensaje);
+                    "Te confirmamos que te has inscrito con éxito al concurso ID: " + this.id + ".\n" +
+                    "¡Buena suerte!";
+            emailService.enviarEmail(p.getEmail(), asunto, mensaje);
             if (esFechaDeApertura())
                 p.addPuntos(10);
         }else {
