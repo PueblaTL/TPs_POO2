@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         // Usar base de datos
         Almacenamiento almacenamientoBaseDatos = new AlmacenamientoBaseDatosConcurso();
-        EmailSender emailSender = new EmailService();
+        EmailSender emailSender = new EmailSender();
 
         // Configurar Concurso
         LocalDate fechaApertura = LocalDate.now();
@@ -16,7 +16,7 @@ public class Main {
         Concurso concurso = new Concurso(fechaApertura, fechaLimite, almacenamientoBaseDatos,emailSender);
 
         // Inscribir participante
-        Participante participante1 = new Participante(897654, "Lionel Messi", "LeoMessi@gmail.com");
+        Participante participante = new Participante(897654, "Lionel Messi", "LeoMessi@gmail.com");
         concurso.inscribirParticipante(participante);
     }
 }
