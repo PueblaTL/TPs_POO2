@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Concurso {
-    static String FUERA_DE_PLAZO = "El plazo para inscribirse al concurso ya termino. ";
+    static String FUERA_DE_PLAZO = "No se puede inscribir, ya que la fecha de inscripción ha expirado.";
     static int idConcurso=0;
     private int id;
     private LocalDate fechaApertura;
@@ -52,7 +52,7 @@ public class Concurso {
                 "\nFecha Límite: " + fechaLimite.format(formatter) +
                 "\nFecha Apertura: "+fechaApertura.format(formatter)+"\n";
 
-        almacenamiento.guardarInscripcion(linea);
+            almacenamiento.guardarInscripcion(linea); // Escribir en BD
     }
 
     void agregarInscripcion(Inscripcion i) {
