@@ -51,6 +51,7 @@ public class Mesa {
         obtenerTotalBedidas();
         obtenerTotalPlatos();
         double totalFinal = obtenerTotalConDescuento(tarjeta,porcentajePropina);
+
     }
 
     public double obtenerTotalConDescuento(TarjetaCredito tarjeta, int porcentajePropina) {
@@ -84,6 +85,4 @@ public class Mesa {
             if (producto.esTipo("PLATO")) {totalPlatos += producto.getCosto() * cantidades.get(i);}
         }
     }
-
-
-}
+    }

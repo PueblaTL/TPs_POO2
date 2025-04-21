@@ -2,8 +2,8 @@ package tp2.concurso;
 
 public class Participante {
     private int dni;
-    private String email;
     private String nombre;
+    private String email;
     private int puntos;
 
     public Participante(int dni, String nombre) {
@@ -11,11 +11,11 @@ public class Participante {
         this.nombre = nombre;
         this.puntos = 0;
     }
-    public Participante(int dni, String nombre, String email) {
+    public Participante(int dni, String name, String email) {
         this.dni = dni;
-        this.nombre = nombre;
-        this.puntos = 0;
+        this.nombre = name;
         this.email = email;
+        this.puntos = 0;
     }
 
     public void addPuntos(int puntos) {
@@ -26,12 +26,12 @@ public class Participante {
         return puntos;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getNombre() {
         return nombre;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override

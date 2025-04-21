@@ -7,8 +7,8 @@ import javax.mail.internet.*;
 import java.util.Properties;
 
 public class EmailServiceImplement implements EmailService {
-    private final String username = "34110542ff1e26"; // usuario de Mailtrap
-    private final String password = "025dc737c44d11"; // contraseña de Mailtrap
+    private final String username = "f5d2f689d53a50"; // usuario de Mailtrap
+    private final String password = "f92a5b2a23a391"; // contraseña de Mailtrap
 
     @Override
     public void enviarEmail(String destinatario, String asunto, String mensaje) {

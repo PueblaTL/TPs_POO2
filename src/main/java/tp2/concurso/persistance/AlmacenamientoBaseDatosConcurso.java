@@ -39,3 +39,15 @@ public class AlmacenamientoBaseDatosConcurso extends DbController implements Alm
 
 }
 
+/*
+USE poo2_db;
+CREATE TABLE inscripciones (
+			  id_inscripcion INT AUTO_INCREMENT PRIMARY KEY , -- ID único de la inscripción
+               fecha_inscripcion DATE NOT NULL, -- Fecha de inscripción
+              id_concurso INT NOT NULL, -- ID del concurso
+                fecha_limite DATE NOT NULL, -- Fecha límite del concurso
+              fecha_apertura DATE NOT NULL -- Fecha de apertura del concurso
+);
+SELECT * FROM inscripciones;
+TRUNCATE TABLE inscripciones;
+ */

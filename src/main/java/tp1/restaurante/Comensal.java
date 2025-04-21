@@ -4,7 +4,7 @@ public class Comensal {
     private int dni;
     private String nombre;
 
-    public Comensal(int dni, String name) {
+    public Comensal(int dni, String nombre) {
         this.dni = dni;
         this.nombre = nombre;
     }

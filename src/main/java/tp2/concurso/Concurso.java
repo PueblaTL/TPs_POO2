@@ -1,7 +1,5 @@
 package tp2.concurso;
 
-import tp2.concurso.persistance.EmailServiceImplement;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -42,7 +40,7 @@ public class Concurso {
 
             // Enviar correo al participante
             String asunto = "Inscripción confirmada";
-            String mensaje = "Hola " + p.getName() + ",\n\n" +
+            String mensaje = "Hola " + p.getNombre() + ",\n\n" +
                     "Te confirmamos que te has inscrito con éxito al concurso ID: " + this.id + ".\n" +
                     "¡Buena suerte!";
             emailService.enviarEmail(p.getEmail(), asunto, mensaje);

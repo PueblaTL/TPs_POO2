@@ -7,7 +7,7 @@ public class Participante {
     private String nombre;
     private int puntos;
 
-    public Participante(int dni, String name) {
+    public Participante(int dni, String nombre) {
         this.dni = dni;
         this.nombre = nombre;
         this.puntos = 0;
