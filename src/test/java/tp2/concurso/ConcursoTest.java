@@ -12,7 +12,8 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ConcursoTest {
-    static String DIRECTORIO ="C:\\Users\\agupu\\Desktop\\Universidad Agustin\\Materias\\Tercer Año\\POO2-Practicos\\tmp\\inscripcion.txt";
+    static String DIRECTORIO ="C:\\Users\\agupu\\Documents\\GitHub\\Archivos\\Inscripciones.txt";
+
 
     @Test
     public void inscribirParticipanteDentroDelPlazo() throws IOException {
@@ -23,22 +24,29 @@ public class ConcursoTest {
         // Configuración del concurso
         var fechaApertura = LocalDate.now().minusDays(2);
         var fechaLimite = fechaApertura.plusDays(10);
-        //    Concurso concurso = new Concurso(fechaApertura, fechaLimite, new EscritorDeArchivoEnDisco(directorio.toString())); // Test En Disco
+    //    Concurso concurso = new Concurso(fechaApertura, fechaLimite, new EscritorDeArchivoEnDisco(directorio.toString())); // Test En Disco
         var fakeInscripcion =  new FakeEscritorDeArchivo();
-        var concurso = new Concurso(fechaApertura, fechaLimite,fakeInscripcion);  // Test En Memoria
+        var fakeAlmacenamientoBD =  new FakeAlmacenamiento();
+        var fakeEmail =  new FakeEmailService();
+
+    //    var concurso = new Concurso(fechaApertura, fechaLimite,fakeInscripcion);  // Test En Memoria
+        var concurso = new Concurso(fechaApertura, fechaLimite,fakeAlmacenamientoBD,fakeEmail); //Test Aislado BD y Email
+
 
         // Participante
-        var participante = new Participante(123456, "Julian Gonzalez");
-        var participante2 = new Participante(293235, "Luciano Pelozo");
+        var participante = new Participante(12345, "Juan Perez","email@email.email");
+        var participante2 = new Participante(54321, "Martín Ramos","asd@asd.asd");
 
         // Inscripción
         concurso.inscribirParticipante(participante);
         concurso.inscribirParticipante(participante2);
 
         // Verificar inscripción
-        //    assertTrue(concurso.existParticipante(participante));
-        assertTrue(fakeInscripcion.startWith("Fecha"));
-
+    //    assertTrue(concurso.existParticipante(participante));
+    //    assertTrue(fakeInscripcion.startWith("Fecha"));
+        assertTrue(fakeAlmacenamientoBD.startWith("Fecha de Inscripción: ")); // Assert para Almacenamientobd
+        assertTrue(fakeEmail.mensajeStartWith("Hola ")); // Assert para Email
+        assertTrue(fakeEmail.destinarioStartWith("asd@asd.asd")); // Assert para Email
     }
 
     @Test
@@ -54,7 +62,7 @@ public class ConcursoTest {
         Concurso concurso = new Concurso(fechaApertura, fechaLimite,escritorArchivo);
 
         // Participante
-        Participante participante = new Participante(338965, "Luis Suarez");
+        Participante participante = new Participante(54321, "Ana Martinez");
 
         // Inscripción
         concurso.inscribirParticipante(participante);
@@ -77,7 +85,7 @@ public class ConcursoTest {
         Concurso concurso = new Concurso(fechaApertura, fechaLimite,escritorArchivo);
 
         // Participante
-        Participante participante = new Participante(28463, "Luis Diaz");
+        Participante participante = new Participante(98765, "Pedro Meza");
 
         // Intento de inscripción
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {

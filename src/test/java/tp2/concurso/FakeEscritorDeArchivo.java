@@ -1,5 +1,4 @@
 package tp2.concurso;
-
 public class FakeEscritorDeArchivo implements EscritorArchivo{
     private String info;
 
