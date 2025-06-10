@@ -1,6 +1,6 @@
-package ar.unrn.tp4.ejercicio3.modelo;
+package tp4.ejercicio3.modelo;
 
-import ar.unrn.tp4.ejercicio3.modelo.Concurso;
+import tp4.ejercicio3.modelo.Concurso;
 
 import java.util.List;
 

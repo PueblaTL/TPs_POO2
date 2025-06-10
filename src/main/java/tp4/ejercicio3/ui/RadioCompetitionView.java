@@ -1,10 +1,10 @@
-package ar.unrn.tp4.ejercicio3.ui;
+package tp4.ejercicio3.ui;
 
-import ar.unrn.tp4.ejercicio3.modelo.Concurso;
-import ar.unrn.tp4.ejercicio3.modelo.ConcursoRepository;
-import ar.unrn.tp4.ejercicio3.modelo.Inscripcion;
-import ar.unrn.tp4.ejercicio3.modelo.InscripcionRepository;
-import ar.unrn.tp4.ejercicio3.modelo.Participante;
+import tp4.ejercicio3.modelo.Concurso;
+import tp4.ejercicio3.modelo.ConcursoRepository;
+import tp4.ejercicio3.modelo.Inscripcion;
+import tp4.ejercicio3.modelo.InscripcionRepository;
+import tp4.ejercicio3.modelo.Participante;
 
 
 import javax.swing.*;
@@ -26,12 +26,7 @@ public class RadioCompetitionView extends JFrame {
     private JTextField txtPhone;
     private JTextField txtEmail;
 
-    /**
-     * Constructor que recibe las dependencias de los repositorios.
-     *
-     * @param concursoRepo      Implementación de ConcursoRepository (Archivo o JDBC).
-     * @param inscripcionRepo Implementación de InscripcionRepository (Archivo o JDBC).
-     */
+
     public RadioCompetitionView(ConcursoRepository concursoRepo, InscripcionRepository inscripcionRepo) {
         // Inyección de dependencias
         this.concursoRepository = concursoRepo;
@@ -54,9 +49,7 @@ public class RadioCompetitionView extends JFrame {
         setVisible(true);
     }
 
-    /**
-     * Inicializa los componentes visuales de la interfaz gráfica.
-     */
+
     private void initComponents() {
         txtName = new JTextField(20);
         txtLastName = new JTextField(20);
@@ -70,9 +63,7 @@ public class RadioCompetitionView extends JFrame {
         btnOk.addActionListener(e -> guardarInscripcion());
     }
 
-    /**
-     * Configura la disposición de los componentes en la ventana usando GridBagLayout.
-     */
+
     private void setupLayout() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -128,10 +119,7 @@ public class RadioCompetitionView extends JFrame {
     }
 
 
-    /**
-     * Carga los concursos cuya inscripción está abierta desde la capa de persistencia
-     * (a través de la interfaz ConcursoRepository) y los muestra en el ComboBox.
-     */
+
     private void cargarConcursosDisponibles() {
         comboBoxConcursos.removeAllItems(); // Limpiar antes de cargar
 
@@ -148,8 +136,7 @@ public class RadioCompetitionView extends JFrame {
                 btnOk.setEnabled(false);
                 comboBoxConcursos.setEnabled(false);
             } else {
-                // Poblar el ComboBox con los objetos Concurso.
-                // El método toString() de Concurso se usará para mostrar el nombre.
+
                 for (Concurso c : concursos) {
                     comboBoxConcursos.addItem(c);
                 }
@@ -173,11 +160,7 @@ public class RadioCompetitionView extends JFrame {
         }
     }
 
-    /**
-     * Intenta guardar la inscripción del participante en el concurso seleccionado.
-     * Realiza validaciones de UI, crea los objetos de dominio (Participante, Inscripcion)
-     * y llama al repositorio de inscripciones para persistir los datos.
-     */
+
     private void guardarInscripcion() {
         // 1. Validación de la UI
         if (!validations()) {
@@ -242,14 +225,7 @@ public class RadioCompetitionView extends JFrame {
         }
     }
 
-    // --- Métodos auxiliares de la UI (Validación y Limpieza) ---
 
-    /**
-     * Realiza validaciones básicas de los campos del formulario.
-     * Verifica que no estén vacíos y que teléfono y email tengan formatos válidos.
-     *
-     * @return true si todas las validaciones pasan, false en caso contrario.
-     */
     private boolean validations() {
         if (txtLastName.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Apellido no puede ser vacío.", "Dato Requerido", JOptionPane.WARNING_MESSAGE); return false; }
@@ -270,29 +246,18 @@ public class RadioCompetitionView extends JFrame {
         return true;
     }
 
-    /**
-     * Verifica si una cadena tiene el formato de email básico.
-     * @param email La cadena a verificar.
-     * @return true si parece un email válido, false en caso contrario.
-     */
+
     private boolean checkEmail(String email) {
         String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
         return email != null && email.matches(regex);
     }
 
-    /**
-     * Verifica si una cadena tiene el formato telefónico NNNN-NNNNNN.
-     * @param telefono La cadena a verificar.
-     * @return true si cumple el formato, false en caso contrario.
-     */
+
     private boolean checkPhone(String telefono) {
         String regex = "\\d{4}-\\d{6}";
         return telefono != null && telefono.matches(regex);
     }
 
-    /**
-     * Limpia todos los campos de entrada del formulario.
-     */
     private void limpiarFormulario() {
         txtLastName.setText("");
         txtName.setText("");

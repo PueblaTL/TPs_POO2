@@ -1,6 +1,6 @@
-package ar.unrn.tp4.ejercicio1.ui;
+package tp4.ejercicio1.ui;
 
-import ar.unrn.tp4.ejercicio1.model.Concurso;
+import tp4.ejercicio1.model.Concurso;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

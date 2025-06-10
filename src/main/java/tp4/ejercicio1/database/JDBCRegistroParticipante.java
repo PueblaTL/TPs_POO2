@@ -1,7 +1,7 @@
-package ar.unrn.tp4.ejercicio1.database;
+package tp4.ejercicio1.database;
 
-import ar.unrn.tp4.ejercicio1.model.Participante;
-import ar.unrn.tp4.ejercicio1.model.RegistroParticipante;
+import tp4.ejercicio1.model.Participante;
+import tp4.ejercicio1.model.RegistroParticipante;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

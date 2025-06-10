@@ -1,4 +1,4 @@
-package ar.unrn.tp4.ejercicio1.model;
+package tp4.ejercicio1.model;
 
 public class Concurso {
     private RegistroParticipante registroParticipante;

@@ -1,7 +1,7 @@
-package ar.unrn.tp4.ejercicio3.persistencia;
+package tp4.ejercicio3.persistencia;
 
-import ar.unrn.tp4.ejercicio3.modelo.Concurso;
-import ar.unrn.tp4.ejercicio3.modelo.ConcursoRepository;
+import tp4.ejercicio3.modelo.Concurso;
+import tp4.ejercicio3.modelo.ConcursoRepository;
 
 import java.sql.*;
 import java.time.LocalDate;

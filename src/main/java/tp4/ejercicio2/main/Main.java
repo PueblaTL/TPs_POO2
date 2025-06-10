@@ -1,8 +1,8 @@
-package ar.unrn.tp4.ejercicio2.main;
+package tp4.ejercicio2.main;
 
 import tp4.ejercicio2.Api;
-import ar.unrn.tp4.ejercicio2.service.ImportadorArchivo;
-import ar.unrn.tp4.ejercicio2.service.NotificadorEmail;
+import tp4.ejercicio2.service.ImportadorArchivo;
+import tp4.ejercicio2.service.NotificadorEmail;
 
 import java.io.FileInputStream;
 import java.io.IOException;

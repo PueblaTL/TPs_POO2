@@ -1,9 +1,9 @@
-package ar.unrn.tp4.ejercicio3.persistencia;
+package tp4.ejercicio3.persistencia;
 
-import ar.unrn.tp4.ejercicio3.modelo.Concurso;
-import ar.unrn.tp4.ejercicio3.modelo.Inscripcion;
-import ar.unrn.tp4.ejercicio3.modelo.InscripcionRepository;
-import ar.unrn.tp4.ejercicio3.modelo.Participante;
+import tp4.ejercicio3.modelo.Concurso;
+import tp4.ejercicio3.modelo.Inscripcion;
+import tp4.ejercicio3.modelo.InscripcionRepository;
+import tp4.ejercicio3.modelo.Participante;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

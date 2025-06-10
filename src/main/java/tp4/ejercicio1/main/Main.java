@@ -1,8 +1,8 @@
-package ar.unrn.tp4.ejercicio1.main;
+package tp4.ejercicio1.main;
 
-import ar.unrn.tp4.ejercicio1.database.JDBCRegistroParticipante;
-import ar.unrn.tp4.ejercicio1.model.Concurso;
-import ar.unrn.tp4.ejercicio1.ui.VentanaPrincipal;
+import tp4.ejercicio1.database.JDBCRegistroParticipante;
+import tp4.ejercicio1.model.Concurso;
+import tp4.ejercicio1.ui.VentanaPrincipal;
 
 import java.awt.*;
 import java.sql.SQLException;

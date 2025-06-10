@@ -1,4 +1,4 @@
-package ar.unrn.tp4.ejercicio3.persistencia;
+package tp4.ejercicio3.persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

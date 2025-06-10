@@ -1,4 +1,4 @@
-package ar.unrn.tp4.ejercicio2.service;
+package tp4.ejercicio2.service;
 
 import tp4.ejercicio2.Importador;
 import tp4.ejercicio2.Persona;

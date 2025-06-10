@@ -1,4 +1,4 @@
-package ar.unrn.tp4.ejercicio3.modelo;
+package tp4.ejercicio3.modelo;
 
 public class Participante {
     private String nombre;

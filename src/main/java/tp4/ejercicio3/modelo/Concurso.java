@@ -1,4 +1,4 @@
-package ar.unrn.tp4.ejercicio3.modelo;
+package tp4.ejercicio3.modelo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

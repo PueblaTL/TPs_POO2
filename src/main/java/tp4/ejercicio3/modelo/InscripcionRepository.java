@@ -1,6 +1,6 @@
-package ar.unrn.tp4.ejercicio3.modelo;
+package tp4.ejercicio3.modelo;
 
-import ar.unrn.tp4.ejercicio3.modelo.Inscripcion;
+import tp4.ejercicio3.modelo.Inscripcion;
 
 public interface InscripcionRepository {
     void save(Inscripcion inscripcion);
