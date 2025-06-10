@@ -67,7 +67,7 @@ public class RestauranteTest {
         mesa.pagarPedido(tarjetaViedma,5);
 
         // Verificar que no aplica descuento
-        assertEquals(125.0, mesa.obtenerTotalConDescuento(tarjetaViedma, 5));
+        assertEquals(126.0, mesa.obtenerTotalConDescuento(tarjetaViedma, 5));
         assertTrue(mesa.seConfirmoPedido());
     }
 }

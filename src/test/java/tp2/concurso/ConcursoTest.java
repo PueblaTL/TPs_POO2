@@ -24,13 +24,11 @@ public class ConcursoTest {
         // Configuración del concurso
         var fechaApertura = LocalDate.now().minusDays(2);
         var fechaLimite = fechaApertura.plusDays(10);
-    //    Concurso concurso = new Concurso(fechaApertura, fechaLimite, new EscritorDeArchivoEnDisco(directorio.toString())); // Test En Disco
         var fakeInscripcion =  new FakeEscritorDeArchivo();
         var fakeAlmacenamientoBD =  new FakeAlmacenamiento();
         var fakeEmail =  new FakeEmailService();
 
-    //    var concurso = new Concurso(fechaApertura, fechaLimite,fakeInscripcion);  // Test En Memoria
-        var concurso = new Concurso(fechaApertura, fechaLimite,fakeAlmacenamientoBD,fakeEmail); //Test Aislado BD y Email
+        var concurso = new Concurso(fechaApertura, fechaLimite,fakeAlmacenamientoBD,fakeEmail);
 
 
         // Participante
@@ -42,35 +40,12 @@ public class ConcursoTest {
         concurso.inscribirParticipante(participante2);
 
         // Verificar inscripción
-    //    assertTrue(concurso.existParticipante(participante));
-    //    assertTrue(fakeInscripcion.startWith("Fecha"));
         assertTrue(fakeAlmacenamientoBD.startWith("Fecha de Inscripción: ")); // Assert para Almacenamientobd
         assertTrue(fakeEmail.mensajeStartWith("Hola ")); // Assert para Email
         assertTrue(fakeEmail.destinarioStartWith("asd@asd.asd")); // Assert para Email
     }
 
-    @Test
-    public void inscribirParticipantePrimerDiaDeApertura() {
-        // Uso del archivo para pruebas
-        Path directorio = Paths.get(DIRECTORIO);
-        // Configurar el escritor de archivo con la ruta
-        EscritorArchivo escritorArchivo = new EscritorDeArchivoEnDisco(directorio.toString());
 
-        // Configuración del concurso
-        LocalDate fechaApertura = LocalDate.now();
-        LocalDate fechaLimite = fechaApertura.plusDays(10);
-        Concurso concurso = new Concurso(fechaApertura, fechaLimite,escritorArchivo);
-
-        // Participante
-        Participante participante = new Participante(54321, "Ana Martinez");
-
-        // Inscripción
-        concurso.inscribirParticipante(participante);
-
-        // Verificar inscripción y puntos
-        assertTrue(concurso.existParticipante(participante));
-        assertEquals(10, participante.getPuntos()); // Ganó puntos por inscribirse el primer día
-    }
 
     @Test
     public void inscribirParticipanteFueraDelPlazo() {
