@@ -1,5 +1,6 @@
-package Ejercicios_Repaso_Parcial2.Ejercicio_Patrones;
-
+package Ejercicios_Repaso_Parcial2.Ataques;
+// Extraigo la lógica común de cálculo de daño en una superclase abstracta Ataque,
+// y dejo que las subclases implementen los detalles del modificador de tipo y del clima
 abstract class Ataque {
     protected int poderBase;
     protected boolean climaAFavor;
@@ -10,6 +11,7 @@ abstract class Ataque {
         this.climaAFavor = climaAFavor;
         this.defensaOponente = defensaOponente;
     }
+
 
     public final double calcularDanio() {
         double modificadorTipo = getModificadorTipo();

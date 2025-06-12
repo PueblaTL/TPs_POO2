@@ -1,4 +1,4 @@
-package Ejercicios_Repaso_Parcial2.Ejercicio_Patrones;
+package Ejercicios_Repaso_Parcial2.Ataques;;
 
 class AtaqueAgua extends Ataque {
     public AtaqueAgua(int poderBase, boolean climaAFavor, int defensaOponente) {

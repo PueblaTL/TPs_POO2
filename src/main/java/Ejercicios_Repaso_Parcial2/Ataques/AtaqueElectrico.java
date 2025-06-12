@@ -1,6 +1,6 @@
-package Ejercicios_Repaso_Parcial2.Ejercicio_Patrones;
+package Ejercicios_Repaso_Parcial2.Ataques;
 
-public class AtaqueElectrico extends Ataque{
+public class AtaqueElectrico extends Ataque {
     public AtaqueElectrico(int poderBase, boolean climaAFavor, int defensaOponente) {
         super(poderBase, climaAFavor, defensaOponente);
     }
