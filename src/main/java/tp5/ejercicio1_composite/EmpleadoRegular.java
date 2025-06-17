@@ -11,4 +11,8 @@ public class EmpleadoRegular implements Empleado {
     public double calcularSalario() {
         return salarioBase;
     }
+    @Override
+    public void imprimir(String indent) {
+        System.out.println(indent + "- Empleado Regular: $" + salarioBase);
+    }
 }

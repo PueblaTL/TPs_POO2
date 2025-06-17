@@ -23,4 +23,11 @@ public class EmpleadoJerarquico implements Empleado {
         }
         return total;
     }
+    @Override
+    public void imprimir(String indent) {
+        System.out.println(indent + "+ Empleado Jerárquico: $" + salarioBase);
+        for (Empleado e : subordinados) {
+            e.imprimir(indent + "  ");
+        }
+    }
 }
