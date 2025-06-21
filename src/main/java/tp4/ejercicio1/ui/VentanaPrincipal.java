@@ -10,6 +10,7 @@ public class VentanaPrincipal extends JFrame {
     private JTextField nombre;
     private JTextField telefono;
     private JTextField region;
+    private JTextField email;
     private Concurso concurso;
 
     public VentanaPrincipal(Concurso concurso) {
@@ -30,6 +31,8 @@ public class VentanaPrincipal extends JFrame {
         this.nombre.setText("");
         this.telefono.setText("");
         this.region.setText("China");
+        this.email = new JTextField(15);
+        this.email.setText("");
         JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new FlowLayout());
@@ -39,16 +42,21 @@ public class VentanaPrincipal extends JFrame {
         contentPane.add(telefono);
         contentPane.add(new JLabel("Region: "));
         contentPane.add(region);
+        contentPane.add(new JLabel("Email: "));
+        contentPane.add(email);
+
         JButton botonCargar = new JButton("Cargar");
         botonCargar.addActionListener(e -> {
             try {
                 concurso.registrarParticipante(
                         nombre.getText(),
                         telefono.getText(),
-                        region.getText()
+                        region.getText(),
+                        email.getText()
                 );
             } catch (Exception e1) {
-                throw new RuntimeException(e1);
+                JOptionPane.showMessageDialog(this, e1.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
         contentPane.add(botonCargar);

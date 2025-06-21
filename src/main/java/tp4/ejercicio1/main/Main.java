@@ -3,6 +3,10 @@ package tp4.ejercicio1.main;
 import tp4.ejercicio1.database.JDBCRegistroParticipante;
 import tp4.ejercicio1.model.Concurso;
 import tp4.ejercicio1.ui.VentanaPrincipal;
+import tp7.ejercicio4_observer.EmailNotifier;
+import tp6.ejercicio5_decorador.EmailService;
+import tp6.ejercicio5_decorador.EmailServiceImplement;
+
 
 import java.awt.*;
 import java.sql.SQLException;
@@ -17,7 +21,14 @@ public class Main {
                             "app",
                             "app"
                     );
+
                     var concurso = new Concurso(registroParticipante);
+
+                    EmailService emailService = new EmailServiceImplement();  // 👈 esto es lo que te falta
+                    concurso.agregarObservador(new EmailNotifier(emailService));
+
+                    new VentanaPrincipal(concurso).AgregarParticipante();
+
                     new VentanaPrincipal(concurso).AgregarParticipante();
                 } catch (Exception e) {
                     System.out.println(e);
