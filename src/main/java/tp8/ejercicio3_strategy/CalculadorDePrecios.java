@@ -1,10 +1,10 @@
 package tp8.ejercicio3_strategy;
 
-class CalculadoraProducto {
+class CalculadorDePrecios {
     public TipoProducto tipo;
 
 
-    public CalculadoraProducto(TipoProducto tipo) {
+    public CalculadorDePrecios(TipoProducto tipo) {
         this.tipo = tipo;
     }
     public double precioFinal() {
