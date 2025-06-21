@@ -23,4 +23,9 @@ public class MEDICINA implements TipoProducto {
     public boolean envioGratis() {
         return precio > 100;
     }
+
+    @Override
+    public double precio() {
+        return precio;
+    }
 }

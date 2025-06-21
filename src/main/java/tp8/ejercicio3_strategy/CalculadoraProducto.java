@@ -2,12 +2,13 @@ package tp8.ejercicio3_strategy;
 
 class CalculadoraProducto {
     public TipoProducto tipo;
-    public double precio;
+
 
     public CalculadoraProducto(TipoProducto tipo) {
         this.tipo = tipo;
     }
     public double precioFinal() {
+        double precio = tipo.precio();
         double impuestos = tipo.impuestos();
         double descuentos = tipo.descuentos();
         boolean envioGratis = tipo.envioGratis();

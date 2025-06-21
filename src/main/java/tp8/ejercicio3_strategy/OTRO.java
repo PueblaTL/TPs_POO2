@@ -23,4 +23,9 @@ public class OTRO implements TipoProducto {
     public boolean envioGratis() {
         return precio > 200;
     }
+
+    @Override
+    public double precio() {
+        return precio;
+    }
 }

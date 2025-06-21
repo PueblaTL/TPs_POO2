@@ -25,4 +25,8 @@ public class ALIMENTO implements TipoProducto {
     public boolean envioGratis() {
         return precio > 200;
     }
+    @Override
+    public double precio() {
+        return precio;
+    }
 }
