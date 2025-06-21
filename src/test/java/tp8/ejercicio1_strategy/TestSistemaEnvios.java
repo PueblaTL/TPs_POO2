@@ -28,14 +28,11 @@ public class TestSistemaEnvios {
     }
     @Test
     public void testCambioEstrategia() {
-        // Arrange
         sistema.agregarProducto(new Producto("Teclado", 5000, 1));
 
-        // Act & Assert - Colectivos Sur
         sistema.seleccionarFormaEnvio(new ColectivosSurStrategy());
         assertEquals(1000, sistema.obtenerCostoEnvio("Capital Federal"));
 
-        // Act & Assert - Correo Argentino
         sistema.seleccionarFormaEnvio(new CorreoArgentinoStrategy());
         assertEquals(500, sistema.obtenerCostoEnvio("Capital Federal"));
     }
