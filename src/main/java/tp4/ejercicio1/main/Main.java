@@ -24,7 +24,7 @@ public class Main {
 
                     var concurso = new Concurso(registroParticipante);
 
-                    EmailService emailService = new EmailServiceImplement();  // 👈 esto es lo que te falta
+                    EmailService emailService = new EmailServiceImplement();
                     concurso.agregarObservador(new EmailNotifier(emailService));
 
                     new VentanaPrincipal(concurso).AgregarParticipante();
